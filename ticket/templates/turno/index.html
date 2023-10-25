@@ -1,0 +1,18 @@
+{% extends 'turno/layout.html' %}
+{% block title %}
+  Turnos
+{% endblock %}
+{% block body %}
+  <div class="titulo">
+    <h3>Lista de municipios</h3>
+  </div>
+  {% if municipios %}
+    <div class="munis">
+      {% for municipio in municipios %}
+        <div class="muni">
+          <h1><a href="{% url 'turnos' municipio.id %}">{{ municipio }}</a></h1>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

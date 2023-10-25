@@ -1,0 +1,28 @@
+{% extends 'turno/layout.html' %}
+{% block title %}
+  Pronostico del municipio
+{% endblock %}
+{% block body %}
+    <h3>{{nmun}}  {{nes}}</h3>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th scope="row">Maxima</th>
+        <td>{{ tmax }} &deg;C</td>
+      </tr>
+      <tr>
+        <th scope="row">Minima</th>
+        <td>{{ tmin }} &deg;C</td>
+      </tr>
+      <tr>
+        <th scope="row">Cielo:</th>
+        <td>{{ desciel }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Probabilidad de Preocipitacion:</th>
+        <td>{{ probprec }}&#37;</td>
+      </tr>
+    </tbody>
+  </table>
+  <a href="{% url 'turnos' municipio.id %}" type="button" class="btn btn-light" role="button">Regresar</a>
+{% endblock %}

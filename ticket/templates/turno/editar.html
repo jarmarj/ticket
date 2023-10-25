@@ -1,0 +1,84 @@
+{% extends 'turno/layout.html' %}
+{% block title %}
+  Editar Turno
+{% endblock %}
+{% block body %}
+  <h1>Editar</h1>
+
+  {% if mensaje %}
+    <div class="mensaje">
+      <p>{{ mensaje }}</p>
+    </div>
+  {% endif %}
+  <form action="{% url 'editar' turno.id %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="curp">CURP</label>
+      <input name="curp" type="text" class="form-control" id="curp" placeholder="" value="{{ turno.curp }}" />
+    </div>
+    <div class="form-group">
+      <label for="nombres">Nombre(s)</label>
+      <input name="nombres" type="text" class="form-control" id="nombres" placeholder="" value="{{ turno.nombres }}" />
+    </div>
+    <div class="form-group">
+      <label for="paterno">Apellido Paterno</label>
+      <input name="paterno" type="text" class="form-control" id="paterno" placeholder="" value="{{ turno.paterno }}" />
+    </div>
+    <div class="form-group">
+      <label for="materno">Apellido Materno</label>
+      <input name="materno" type="text" class="form-control" id="materno" placeholder="" value="{{ turno.materno }}" />
+    </div>
+    <div class="form-group">
+      <label for="telefono">Telefono</label>
+      <input name="telefono" type="number" class="form-control" id="telefono" placeholder="" value="{{ turno.telefono }}" />
+    </div>
+    <div class="form-group">
+      <label for="celular">Celular</label>
+      <input name="celular" type="number" class="form-control" id="celular" placeholder="" value="{{ turno.celular }}" />
+    </div>
+    <div class="form-group">
+      <label for="correo">Correo</label>
+      <input name="correo" type="email" class="form-control" id="correo" placeholder="" value="{{ turno.correo }}" />
+    </div>
+    <div class="form-group">
+      <label for="nivel">Nivel</label>
+      <select class="form-control" name="nivel" id="nivel">
+        <option disabled selected value>-- Escoge una opcion --</option>
+        {% for nivel in niveles %}
+          <option value="{{ nivel }}">{{ nivel }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="asunto">Asunto</label>
+      <select class="form-control" name="asunto" id="asunto">
+        <option disabled selected value>-- Escoge una opcion --</option>
+        {% for asunto in asuntos %}
+          <option value="{{ asunto }}">{{ asunto }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="muni">Municipio</label>
+      <select class="form-control" name="municipio" id="muni">
+        <option disabled selected value>-- Escoge una opcion --</option>
+        {% for municipio in municipios %}
+          <option value="{{ municipio }}">{{ municipio }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="estatus">Estatus</label>
+        <select class="form-control" name="estatus" id="estatus">
+          <option disabled selected value>{{ turno.status }}</option>
+          {% for estatus in status %}
+            <option value="{{ estatus }}">{{ estatus }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    <div class="detalles-buttons">
+      <a href="{% url "detalles" turno.id %}" type="button" class="btn btn-light" role="button">Regresar</a>
+      <button type="submit" class="btn btn-success">Actualizar</button>
+    </div>
+  </form>
+{% endblock %}

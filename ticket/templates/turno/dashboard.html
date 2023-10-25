@@ -1,0 +1,31 @@
+{% extends "turno/layout.html" %}
+{% block title %}Dashboard{% endblock title %}
+{% block body %}
+<div class="resueltos">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var turnos = google.visualization.arrayToDataTable([
+                ['Turnos', 'Total de turnos'],
+                ['Resueltos', {{resueltos|length}}],
+                ['pendientes', {{pendientes|length}}]
+            ]);
+            var options = {
+                title: 'Turnos Resueltos/Pendientes'
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('resueltos'));
+            chart.draw(turnos, options);
+        }
+    </script>
+    <div id="resueltos" style="width: 100%;"></div>
+</div>
+{% if municipio %}
+    <a href="{% url 'turnos' municipio.id %}" type="button" class="btn btn-light" role="button">Regresar</a>
+{% else %}
+    <a href="{% url 'index' %}" type="button" class="btn btn-light" role="button">Regresar</a>
+{% endif %}
+{% endblock body %}

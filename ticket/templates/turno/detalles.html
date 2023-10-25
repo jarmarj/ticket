@@ -1,0 +1,32 @@
+{% extends 'turno/layout.html' %}
+{% block title %}
+  Turno {{ turno.turno }} {{ turno.municipio }}
+{% endblock %}
+{% block body %}
+  <div class="titulo">
+    <h3 class="detalles-titulo">Detalles turno {{ turno.turno }} {{ turno.municipio }}</h3>
+  </div>
+  <div class="card" style="width: 100%;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item curp">CURP: {{ turno.curp }}</li>
+      <li class="list-group-item">Nombre completo: {{ turno.nombres }} {{ turno.paterno }} {{ turno.materno }}</li>
+      <li class="list-group-item">Telefono: {{ turno.telefono }}</li>
+      <li class="list-group-item">Celular: {{ turno.celular }}</li>
+      <li class="list-group-item">Correo: {{ turno.correo }}</li>
+      <li class="list-group-item">Nivel: {{ turno.nivel }}</li>
+      <li class="list-group-item">Asunto: {{ turno.asunto }}</li>
+      <li class="list-group-item">Municipio: {{ turno.municipio }}</li>
+      {% if turno.status.estatus == 'Pendiente' %}
+        <li class="list-group-item pendiente">Estatus: {{ turno.status }}</li>
+      {% else %}
+        <li class="list-group-item notpendiente">Estatus: {{ turno.status }}</li>
+      {% endif %}
+      <li class="list-group-item">Turno: {{ turno.turno }}</li>
+    </ul>
+  </div>
+  <div class="detalles-buttons">
+    <a href="{% url 'turnos' turno.municipio.id %}" type="button" class="btn btn-light" role="button">Regresar</a>
+    <a href="{% url 'pdf' turno.id %}" type="button" class="btn btn-danger" role="button" target="_blank">PDF</a>
+    <a href="{% url 'editar' turno.id %}" type="button" class="btn btn-primary" role="button">Editar</a>
+  </div>
+{% endblock %}

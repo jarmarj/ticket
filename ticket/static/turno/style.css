@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mensaje {
+  background-color: #e62a2a;
+}
+
+.pendiente {
+  background-color: #e62a2a;
+  color: white;
+}
+
+.notpendiente {
+  background-color: #52c974;
+}
+
+.curp {
+  background-color: #37b15a;
+}
+
+.list-group-item {
+  text-align: center;
+}
+
+.btn-light {
+  border: solid #e62a2a 1px;
+}
+
+.btn-primary {
+  color: white;
+}
+
+.titulo {
+  border-radius: inherit;
+  width: 100%;
+  background-color: #e1d96a;
+  text-align: center;
+  padding: 5px;
+}
+
+.detalles-buttons {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #f2f2f2;
+}
+body .container {
+  border-radius: 10px;
+  width: 100%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+body .container .resueltos {
+  width: 100%;
+}
+body .container .resueltos #resueltos {
+  width: 100%;
+}
+body .container .menu {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+}
+body .container .munis {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+body .container .munis .muni {
+  margin: 20px;
+}
+body .container .turnos {
+  width: 100%;
+}
+body .container h1 {
+  font-size: 30px;
+  font-weight: 600;
+  background-clip: text;
+}
+body .container form {
+  width: 100%;
+}
+
+@media screen and (max-width: 500px) {
+  .detalles-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+  .detalles-buttons a {
+    margin: 10px;
+  }
+  body .container .munis {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  body .container .munis .muni {
+    text-align: center;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
